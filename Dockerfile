@@ -21,7 +21,7 @@ ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
 RUN pnpm run build
 
 # ── Запуск ────────────────────────────────────────────────────────────────────
-FROM nginx:1.27-alpine AS runtime
+FROM nginx:1.31-alpine AS runtime
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /build/dist /usr/share/nginx/html
