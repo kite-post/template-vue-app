@@ -10,6 +10,12 @@ updates:
         patterns: ['vue', 'vue-*', '@vue/*', 'pinia']
       tooling:
         patterns: ['vite', 'vitest', 'eslint*', '@vitejs/*', 'typescript', 'prettier']
+    ignore:
+      # TypeScript 7 — нативний порт, який живе паралельно з 6.x;
+      # typescript-eslint його поки не підтримує (peer >=4.8.4 <6.1.0).
+      # Знімати цей виняток тоді, коли підтримка з'явиться.
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major']
   - package-ecosystem: github-actions
     directory: /
     schedule:
