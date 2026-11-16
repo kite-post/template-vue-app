@@ -1,0 +1,11 @@
+.git/
+.github/
+node_modules/
+dist/
+coverage/
+.idea/
+.vscode/
+.DS_Store
+README.md
+Makefile
+.pnpm-store/

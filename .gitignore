@@ -1,0 +1,8 @@
+node_modules/
+dist/
+coverage/
+*.local
+.idea/
+.vscode/
+.DS_Store
+.pnpm-store/
