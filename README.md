@@ -1,8 +1,8 @@
 # template-vue-app
 
-Шаблон репозиторію для веб-застосунку Kite: Vue 3, Vite, TypeScript, Pinia,
-Vue Router, vue-i18n, pnpm. Із нього створюються kite-web, kite-business,
-kite-ops і kite-box-screen (5.2).
+Шаблон репозиторію для веб-застосунку Kite: Vue 3, Vite 8, TypeScript, Pinia,
+Vue Router, vue-i18n, pnpm 12 на Node 26. Із нього створюються kite-web,
+kite-business, kite-ops і kite-box-screen (5.2).
 
 ## Новий застосунок
 
@@ -33,6 +33,11 @@ Makefile                  той самий набір цілей, що й у р
 `eslint.config.ts`, словники локалізації. Жодного `.js` у репозиторії немає
 навмисно — конфіг теж код, і він теж має перевірятися типами.
 
+TypeScript закріплений на 6.0, хоча 7.0 уже вийшов: 7.x — це нативний порт,
+який живе паралельно з 6.x, і typescript-eslint його поки не підтримує
+(peer-діапазон `>=4.8.4 <6.1.0`). Щойно підтримка з'явиться, достатньо буде
+підняти одне поле.
+
 ## Команди
 
 ```bash
@@ -50,8 +55,9 @@ make up         # підняти образ на 3000
 
 pnpm, не npm: один store на всі чотири застосунки замість чотирьох копій
 `node_modules`, і `--frozen-lockfile` у CI падає, якщо lock-файл розійшовся з
-`package.json`. Версія pnpm закріплена полем `packageManager` — і локально
-(через corepack), і в CI, і в образі вона та сама.
+`package.json`. Версія pnpm закріплена полем `packageManager`: локально її
+бере corepack, у CI — `pnpm/action-setup`, а в образі вона ставиться через
+`npm install -g`, бо з Node 26 corepack уже не входить до дистрибутива.
 
 ## CI
 

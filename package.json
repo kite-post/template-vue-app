@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=22",
-    "pnpm": ">=9"
+    "node": ">=26",
+    "pnpm": ">=12"
   },
   "scripts": {
     "dev": "vite",
@@ -17,28 +17,28 @@
     "test:unit": "vitest"
   },
   "dependencies": {
-    "pinia": "^2.3.0",
-    "vue": "^3.5.13",
-    "vue-i18n": "^9.14.2",
-    "vue-router": "^4.5.0"
+    "pinia": "^4.1.0",
+    "vue": "^3.5.45",
+    "vue-i18n": "^11.4.20",
+    "vue-router": "^5.5.1"
   },
   "devDependencies": {
-    "@tsconfig/node22": "^22.0.0",
-    "@types/node": "^22.10.2",
-    "@vitejs/plugin-vue": "^5.2.1",
-    "@vue/eslint-config-prettier": "^10.1.0",
-    "@vue/eslint-config-typescript": "^14.2.0",
-    "@vue/test-utils": "^2.4.6",
-    "@vue/tsconfig": "^0.7.0",
-    "eslint": "^9.20.0",
-    "eslint-plugin-vue": "^9.32.0",
-    "jiti": "^2.4.2",
-    "jsdom": "^25.0.1",
-    "prettier": "^3.4.2",
-    "typescript": "~5.7.2",
-    "vite": "^6.0.5",
-    "vitest": "^3.0.5",
-    "vue-tsc": "^2.2.0"
+    "@tsconfig/node26": "^26.0.2",
+    "@types/node": "^26.6.6",
+    "@vitejs/plugin-vue": "^6.0.11",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.9.0",
+    "@vue/test-utils": "^2.6.0",
+    "@vue/tsconfig": "^0.9.1",
+    "eslint": "^10.15.0",
+    "eslint-plugin-vue": "^10.12.1",
+    "jiti": "^2.7.0",
+    "jsdom": "^31.0.1",
+    "prettier": "^3.10.1",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0",
+    "vue-tsc": "^3.3.14"
   },
-  "packageManager": "pnpm@9.15.3"
+  "packageManager": "pnpm@12.21.0"
 }

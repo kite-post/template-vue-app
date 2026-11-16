@@ -1,12 +1,15 @@
 # syntax=docker/dockerfile:1
 
 # ── Збірка ────────────────────────────────────────────────────────────────────
-FROM node:22-alpine AS build
+FROM node:26-alpine AS build
 WORKDIR /build
 
+# У Node 26 corepack уже не входить до дистрибутива, тож pnpm ставимо явно.
+# Версія — та сама, що в полі packageManager, інакше lock-файл може поїхати.
+ARG PNPM_VERSION=12.21.0
 ENV PNPM_HOME=/pnpm
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
+RUN npm install -g "pnpm@${PNPM_VERSION}"
 
 # Залежності окремим шаром: lock-файл змінюється рідше за код.
 COPY package.json pnpm-lock.yaml .npmrc ./
@@ -21,7 +24,7 @@ ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
 RUN pnpm run build
 
 # ── Запуск ────────────────────────────────────────────────────────────────────
-FROM nginx:1.27-alpine AS runtime
+FROM nginx:1.31-alpine AS runtime
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /build/dist /usr/share/nginx/html
