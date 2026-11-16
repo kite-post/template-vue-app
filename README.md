@@ -7,7 +7,7 @@ kite-ops і kite-box-screen (5.2).
 ## Новий застосунок
 
 ```bash
-gh repo create kite-post/kite-web --private --template kite-post/template-vue-app
+gh repo create kite-post/kite-web --public --template kite-post/template-vue-app
 cd kite-web
 make rename NAME=kite-web
 git add -A && git commit -m "Перейменувати шаблон у kite-web" && git push
