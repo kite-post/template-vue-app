@@ -3,9 +3,12 @@ ORG   ?= kite-post
 IMAGE ?= ghcr.io/$(ORG)/$(APP)
 TAG   ?= dev
 PORT  ?= 3000
+# Тег kite-contracts, за яким закріплений застосунок. Той самий номер стоїть у
+# package.json; contracts-check стежить, щоб вони не розійшлися.
+CONTRACTS_VERSION ?= 0.2.1
 
 .DEFAULT_GOAL := help
-.PHONY: help install build lint fmt types test test-it verify image run up down clean rename
+.PHONY: help install build lint fmt types test test-it verify image run up down clean contracts contracts-check rename
 
 help: ## Показати цілі
 	@grep -hE '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) \
@@ -47,6 +50,12 @@ down: ## Зупинити контейнер
 
 clean: ## Прибрати збірку і кеші
 	rm -rf dist coverage node_modules/.tmp node_modules/.vite
+
+contracts: ## Підключити @kite-post/contracts за тегом; нова версія — make contracts V=0.2.0
+	@bash scripts/contracts.sh "$(if $(V),$(V),$(CONTRACTS_VERSION))"
+
+contracts-check: ## Перевірити, що контракти підключені за тегом і копій схем немає
+	@bash scripts/contracts-check.sh "$(CONTRACTS_VERSION)"
 
 rename: ## Перейменувати шаблон: make rename NAME=kite-web
 	@test -n "$(NAME)" || (echo "Вкажи ім'я: make rename NAME=kite-web"; exit 1)

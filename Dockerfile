@@ -12,8 +12,12 @@ ENV PATH="$PNPM_HOME:$PATH"
 RUN npm install -g "pnpm@${PNPM_VERSION}"
 
 # Залежності окремим шаром: lock-файл змінюється рідше за код.
-COPY package.json pnpm-lock.yaml .npmrc ./
+# @kite/ui і @kite-post/contracts живуть у GitHub Packages, а він віддає npm лише з
+# токеном. Токен їде секретом BuildKit у ~/.npmrc, тож не лишається ні в шарах
+# образу, ні в його історії; у CI його розставляє спільний workflow.
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 RUN --mount=type=cache,target=/pnpm/store \
+    --mount=type=secret,id=npmrc,target=/root/.npmrc,required=false \
     pnpm install --frozen-lockfile --store-dir /pnpm/store
 
 COPY . .

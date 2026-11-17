@@ -59,6 +59,37 @@ pnpm, не npm: один store на всі чотири застосунки з�
 бере corepack, у CI — `pnpm/action-setup`, а в образі вона ставиться через
 `npm install -g`, бо з Node 26 corepack уже не входить до дистрибутива.
 
+## Контракти
+
+Типи REST і подій, реєстр топіків і типізований клієнт API приходять пакетом
+`@kite-post/contracts` з GitHub Packages, закріпленим точною версією — своїх копій
+`openapi.yaml` і JSON Schema застосунок не тримає (5.4, п. 6).
+
+```bash
+make contracts            # поставити пакет за поточним тегом
+make contracts V=0.3.0    # перейти на нову версію: Makefile + package.json + lock
+make contracts-check      # версія точна, lock узгоджений, копій схем немає
+```
+
+```ts
+import { createKiteClient } from '@kite-post/contracts'
+
+const api = createKiteClient({ baseUrl: import.meta.env.VITE_API_BASE_URL })
+const { data } = await api.GET('/public/track/{trackingNumber}', {
+  params: { path: { trackingNumber } },
+})
+```
+
+Нова версія приходить сама: після релізу `kite-contracts` розсилає подію
+всім репозиторіям із топіком `kite-contracts`, і workflow `contracts-bump`
+відкриває PR з `make contracts V=<версія>`. Версія одна на всі репозиторії.
+Руками те саме: `make contracts V=0.3.0`. Якщо тегу немає, `Makefile` і
+маніфест лишаються як були.
+
+Пакет приватний, як і `@kite/ui`: локально потрібен токен з `read:packages`, у
+CI вистачає вбудованого `GITHUB_TOKEN`, а в збірку образу токен їде секретом
+BuildKit (`npmrc`) і в шарах не лишається.
+
 ## CI
 
 Увесь пайплайн — виклик спільного workflow з

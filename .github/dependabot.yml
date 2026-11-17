@@ -11,6 +11,9 @@ updates:
       tooling:
         patterns: ['vite', 'vitest', 'eslint*', '@vitejs/*', 'typescript', 'prettier']
     ignore:
+      # Версію kite-contracts піднімає workflow contracts-bump одразу після
+      # релізу — одну на всі репозиторії (5.4, п. 6). Dependabot тут лише дублював би PR.
+      - dependency-name: '@kite-post/contracts'
       # TypeScript 7 — нативний порт, який живе паралельно з 6.x;
       # typescript-eslint його поки не підтримує (peer >=4.8.4 <6.1.0).
       # Знімати цей виняток тоді, коли підтримка з'явиться.
