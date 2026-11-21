@@ -2,7 +2,7 @@
 # Підключає @kite-post/contracts за тегом: make contracts V=0.2.0 розставляє версію в
 # Makefile і package.json (точну, без ^) і оновлює lock-файл. Без V — ставить
 # поточну версію. Цим самим викликом користується CI, коли kite-contracts
-# випускає новий тег. Пакет живе в GitHub Packages поруч з @kite/ui (5.2), тож
+# випускає новий тег. Пакет живе в GitHub Packages поруч з @kite-post/ui (5.2), тож
 # потрібен NODE_AUTH_TOKEN з правом read:packages — як і для pnpm install.
 set -euo pipefail
 

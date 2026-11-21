@@ -86,9 +86,9 @@ const { data } = await api.GET('/public/track/{trackingNumber}', {
 Руками те саме: `make contracts V=0.3.0`. Якщо тегу немає, `Makefile` і
 маніфест лишаються як були.
 
-Пакет приватний, як і `@kite/ui`: локально потрібен токен з `read:packages`, у
-CI вистачає вбудованого `GITHUB_TOKEN`, а в збірку образу токен їде секретом
-BuildKit (`npmrc`) і в шарах не лишається.
+Пакет приватний, як і `@kite-post/ui`: локально потрібен токен з
+`read:packages`, у CI вистачає вбудованого `GITHUB_TOKEN`, а в збірку образу
+токен їде секретом BuildKit (`npmrc`) і в шарах не лишається.
 
 ## CI
 
@@ -110,9 +110,10 @@ docker build --build-arg VITE_API_BASE_URL=/api/v1 -t kite-web:dev .
 відносний шлях працює без CORS. У розробці те саме робить проксі Vite
 (`VITE_API_PROXY`, типово `http://localhost:8080`).
 
-## Коли підключатимемо @kite/ui
+## Коли підключатимемо @kite-post/ui
 
 UI-кит живе в окремому репозиторії і приходить npm-пакетом з GitHub Packages,
 закріпленим за версією (5.2). `.npmrc` для цього вже налаштований: скоуп
-`@kite` дивиться на `npm.pkg.github.com`. Локально потрібен токен з
-`read:packages`, у CI вистачає вбудованого `GITHUB_TOKEN`.
+`@kite-post` дивиться на `npm.pkg.github.com`, той самий, що й для
+контрактів. Локально потрібен токен з `read:packages`, у CI вистачає
+вбудованого `GITHUB_TOKEN`.
