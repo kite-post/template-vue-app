@@ -5,7 +5,7 @@ TAG   ?= dev
 PORT  ?= 3000
 # Тег kite-contracts, за яким закріплений застосунок. Той самий номер стоїть у
 # package.json; contracts-check стежить, щоб вони не розійшлися.
-CONTRACTS_VERSION ?= 0.2.1
+CONTRACTS_VERSION ?= 0.3.0
 
 .DEFAULT_GOAL := help
 .PHONY: help install build lint fmt types test test-it verify image run up down clean contracts contracts-check rename
