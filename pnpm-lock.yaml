@@ -176,8 +176,8 @@ importers:
   .:
     dependencies:
       '@kite-post/contracts':
-        specifier: 0.2.1
-        version: 0.2.1
+        specifier: 0.3.0
+        version: 0.3.0
       pinia:
         specifier: ^4.1.0
         version: 4.1.0(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.45(typescript@6.0.3))
@@ -397,8 +397,8 @@ packages:
   '@keyv/serialize@1.1.1':
     resolution: {integrity: sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==}
 
-  '@kite-post/contracts@0.2.1':
-    resolution: {integrity: sha512-oOreazFMiz/JlWWiBZBKfnG+6sQN1PkdybK+jL/XMuM7xNzIfmawTHXtBiT30R+SqGn5gp2cHJ72tJR6tgRyJg==, tarball: https://npm.pkg.github.com/download/@kite-post/contracts/0.2.1/81e236d8cc78fefe72dae19ac1e037b44cac1412}
+  '@kite-post/contracts@0.3.0':
+    resolution: {integrity: sha512-Nioxt1Xiu9QUc0IN/XiCA+DYUcPJl3Ugj9N6WujZVrinpGZtyrFSJ/AjQAGGL+L64LWtKEhV4SHcu3nSf5Rhmg==, tarball: https://npm.pkg.github.com/download/@kite-post/contracts/0.3.0/712f3ae040f1a631636619a47f0efa58f65d3dfa}
 
   '@napi-rs/wasm-runtime@1.2.6':
     resolution: {integrity: sha512-mRyDmEw9/fCDXCGfL1sbgIw/GUK0PVxRW4YwgPN61F3LQ+fSyoBFarJVzgGyhF6kRzEQZ0FejDqm4WLXSeqQmw==}
@@ -1895,7 +1895,7 @@ snapshots:
 
   '@keyv/serialize@1.1.1': {}
 
-  '@kite-post/contracts@0.2.1':
+  '@kite-post/contracts@0.3.0':
     dependencies:
       openapi-fetch: 0.17.0
 
